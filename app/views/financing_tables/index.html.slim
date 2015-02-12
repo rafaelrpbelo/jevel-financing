@@ -1,0 +1,27 @@
+h2 FinancingTables#Index
+
+table.table.table-hover.table-bordered
+  thead
+    tr
+      td Bank
+      td Time
+      td Return
+      td Coefficient
+      td Initial year
+      td End year
+      td colspan='2'
+
+  tbody
+    = content_tag_for :tr, @financings do |financing|
+      td= financing.bank
+      td= financing.time
+      td= financing.return
+      td= financing.coefficient
+      td= financing.initial_year
+      td= financing.end_year
+      td= link_to 'Edit', edit_financing_table_path(financing)
+      td= link_to 'Destroy', financing, method: :delete, data: { confirm: 'Are you sure?' }
+
+br
+=> link_to 'Make a simulation!', simulation_financing_tables_path
+= link_to 'Registry table', new_financing_table_path
